@@ -9,14 +9,16 @@ import Foundation
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var authManager: AuthManager
     var body: some View {
         Form {
             Button("Logout") {
-                UserDefaults.standard.set(false, forKey: "isLoggedIn")
+                authManager.logout()
                 // Redirect to login view
             }
             // Toggle for measurement system, etc.
         }
+        .navigationTitle("Settings")
     }
 }
 

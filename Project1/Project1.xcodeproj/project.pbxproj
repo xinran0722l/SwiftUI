@@ -21,6 +21,7 @@
 		B061C4512B9DD09A00EAB694 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4502B9DD09A00EAB694 /* HomeViewModel.swift */; };
 		B061C4532B9DD11900EAB694 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4522B9DD11900EAB694 /* DataService.swift */; };
 		B061C4552B9DD6E700EAB694 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4542B9DD6E700EAB694 /* MainContentView.swift */; };
+		B061C4572B9DD97100EAB694 /* authManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4562B9DD97100EAB694 /* authManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		B061C4502B9DD09A00EAB694 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B061C4522B9DD11900EAB694 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		B061C4542B9DD6E700EAB694 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
+		B061C4562B9DD97100EAB694 /* authManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				B061C43F2B9DB35A00EAB694 /* ReModel.swift */,
 				B061C4502B9DD09A00EAB694 /* HomeViewModel.swift */,
 				B061C4522B9DD11900EAB694 /* DataService.swift */,
+				B061C4562B9DD97100EAB694 /* authManager.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				B061C44B2B9DCC1300EAB694 /* EditReView.swift in Sources */,
 				B061C4432B9DB87300EAB694 /* LoginView.swift in Sources */,
 				B061C4472B9DBB9C00EAB694 /* RegistrationView.swift in Sources */,
+				B061C4572B9DD97100EAB694 /* authManager.swift in Sources */,
 				B061C4402B9DB35A00EAB694 /* ReModel.swift in Sources */,
 				B061C4552B9DD6E700EAB694 /* MainContentView.swift in Sources */,
 			);

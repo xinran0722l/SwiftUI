@@ -13,8 +13,8 @@ import Foundation
 struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
-    @State private var isAuthenticated: Bool = false
-
+    @EnvironmentObject var authManager: AuthManager
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -23,9 +23,7 @@ struct LoginView: View {
                 SecureField("Password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 Button("Login") {
-                    // Perform login validation...
-                    UserDefaults.standard.set(true, forKey: "isLoggedIn")
-                    isAuthenticated = true
+                    authManager.login(username: username, password: password)
                 }
             }
             .navigationTitle("Login")
@@ -34,9 +32,9 @@ struct LoginView: View {
 //            }
             
         }
-        .navigationDestination(isPresented: $isAuthenticated) {
-            MainContentView()
-        }
+//        .navigationDestination(isPresented: $isAuthenticated) {
+//            MainContentView()
+//        }
     }
 }
 
