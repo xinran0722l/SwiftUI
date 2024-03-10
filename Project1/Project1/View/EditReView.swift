@@ -92,3 +92,9 @@ struct LimitedTextField: View {
             }
     }
 }
+
+struct AddEditRecipeView_Previews: PreviewProvider{
+    static var previews: some View{
+        AddEditRecipeView()
+    }
+}

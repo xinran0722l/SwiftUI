@@ -13,7 +13,7 @@ struct Project1App: App {
         WindowGroup {
             NavigationStack {
                 if UserDefaults.standard.bool(forKey: "isLoggedIn") {
-                    HomeView(viewModel: HomeViewModel())
+                    MainContentView()
                 } else {
                     LoginView()
                 }

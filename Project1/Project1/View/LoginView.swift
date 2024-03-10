@@ -28,10 +28,14 @@ struct LoginView: View {
                     isAuthenticated = true
                 }
             }
-            .navigationDestination(for: Bool.self) { _ in
-                HomeView(viewModel: HomeViewModel())
-            }
             .navigationTitle("Login")
+//            .navigationDestination(for: Bool.self) { _ in
+//                HomeView(viewModel: HomeViewModel())
+//            }
+            
+        }
+        .navigationDestination(isPresented: $isAuthenticated) {
+            MainContentView()
         }
     }
 }
