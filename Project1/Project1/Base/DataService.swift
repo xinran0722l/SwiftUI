@@ -33,8 +33,8 @@ class DataService {
         let vegetarianCategory = categories.first { $0.name == "Vegetarian" }
 
         return [
-            Recipe(name: "Pancakes", isFavorite: false, description: "Delicious breakfast pancakes.", instruction: "Mix and cook.", categories: breakfastCategory != nil ? [breakfastCategory!] : [], ingredients: []),
-            Recipe(name: "Vegetarian Pizza", isFavorite: false, description: "A tasty vegetarian pizza.", instruction: "Prepare dough, add toppings, and bake.", categories: vegetarianCategory != nil ? [vegetarianCategory!] : [], ingredients: [])
+            Recipe(name: "Pancakes", isFavorite: false, descriptions: "Delicious breakfast pancakes.", instruction: "Mix and cook.", categories: breakfastCategory != nil ? [breakfastCategory!] : [], ingredients: []),
+            Recipe(name: "Vegetarian Pizza", isFavorite: false, descriptions: "A tasty vegetarian pizza.", instruction: "Prepare dough, add toppings, and bake.", categories: vegetarianCategory != nil ? [vegetarianCategory!] : [], ingredients: [])
             // Add more recipes as needed
         ]
     }

@@ -34,23 +34,12 @@ class HomeViewModel: ObservableObject {
     }
     
     var filteredRecipes: [Recipe] {
-        // Adjust this to filter recipes based on selected categories
-        print("Currently selected category IDs: \(selectedCategoryIDs)")
-        guard !selectedCategoryIDs.isEmpty else { return recipes }
+        let selectedCategoryNames: Set<String> = Set(categories.filter { selectedCategoryIDs.contains($0.id) }.map { $0.name })
         return recipes.filter { recipe in
-            let recipeCategoryIDs = Set(recipe.categories.map { $0.id })
-            let match = !recipeCategoryIDs.isDisjoint(with: selectedCategoryIDs)
-            print("recipeCategoryIDs \(recipeCategoryIDs)")
-            print("selectedCategoryIDs \(selectedCategoryIDs)")
-            print("match or not \(match)")
-            
-            if match {
-                print("Recipe \(recipe.name) matches selected categories.")
-            }
-            return match// Meaning they have common elements
+            let recipeCategoryNames = Set(recipe.categories.map { $0.name })
+            return !recipeCategoryNames.isDisjoint(with: selectedCategoryNames) // True if there is at least one common name
         }
     }
-    
     
     func toggleFavorite(for recipe: Recipe) {
         if favoriteRecipeIDs.contains(recipe.id) {

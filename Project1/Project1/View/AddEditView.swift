@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct AddEditRecipeView: View {
+struct AddEditView: View {
+    
     @State private var recipeName: String = ""
     @State private var recipeDescription: String = ""
     @State private var selectedCategories: [Category] = [] // Assuming you have a way to manage category selection
@@ -20,7 +21,7 @@ struct AddEditRecipeView: View {
     // Dummy categories for demonstration. Replace with your data source.
     let availableCategories: [Category] = [
         Category(name: "Breakfast"),
-        Category(name: "Dinner")
+        Category(name: "Vegetarian")
     ]
 
     var body: some View {
@@ -28,6 +29,15 @@ struct AddEditRecipeView: View {
             LimitedTextField(label: "Recipe Name", text: $recipeName, maxLength: 50)
             LimitedTextField(label: "Description", text: $recipeDescription, maxLength: 250)
             
+            Section(header: Text("Description")) {
+                TextEditor(text: $recipeDescription)
+                    .frame(minHeight: 100) // Adjust based on your UI needs
+                    .onChange(of: recipeDescription) {
+                        if recipeDescription.count > 250 {
+                            recipeDescription = String(recipeDescription.prefix(250))
+                        }
+                    }
+            }
             Section(header: Text("Categories")) {
                 // Assuming you have a predefined list of categories
                 ForEach(availableCategories, id: \.self) { category in
@@ -58,6 +68,7 @@ struct AddEditRecipeView: View {
         .navigationTitle("Edit Recipe")
     }
 }
+
 
 struct MultipleSelectionRow: View {
     var title: String
@@ -95,6 +106,6 @@ struct LimitedTextField: View {
 
 struct AddEditRecipeView_Previews: PreviewProvider{
     static var previews: some View{
-        AddEditRecipeView()
+        AddEditView()
     }
 }

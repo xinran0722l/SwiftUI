@@ -41,7 +41,7 @@ struct Recipe: Identifiable {
     var id: UUID = UUID()
     var name: String
     var isFavorite: Bool
-    var description: String
+    var descriptions: String
     var instruction: String
     var categories: [Category] // Many-to-many relationship to Category
     var ingredients: [RecipeIngredient] // One-to-many relationship to RecipeIngredient

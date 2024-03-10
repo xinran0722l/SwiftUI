@@ -9,28 +9,6 @@ import Foundation
 
 import SwiftUI
 
-//struct HomeView: View {
-//    @StateObject var viewModel = HomeViewModel()
-//
-//    var body: some View {
-//        NavigationView {
-//            List {
-//                ForEach(viewModel.recipes) { recipe in
-//                    NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
-//                        Text(recipe.name)
-//                    }
-//                }
-//            }
-//            .navigationTitle("Recipes")
-//        }
-//        .onAppear {
-//            viewModel.loadRecipes()
-//        }
-//    }
-//}
-
-import SwiftUI
-
 struct HomeView: View {
     @ObservedObject var viewModel = HomeViewModel()
     @EnvironmentObject var authManager: AuthManager

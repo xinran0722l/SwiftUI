@@ -15,13 +15,14 @@
 		B061C4432B9DB87300EAB694 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4422B9DB87300EAB694 /* LoginView.swift */; };
 		B061C4472B9DBB9C00EAB694 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4462B9DBB9C00EAB694 /* RegistrationView.swift */; };
 		B061C4492B9DBC2000EAB694 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4482B9DBC2000EAB694 /* HomeView.swift */; };
-		B061C44B2B9DCC1300EAB694 /* EditReView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C44A2B9DCC1300EAB694 /* EditReView.swift */; };
+		B061C44B2B9DCC1300EAB694 /* AddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C44A2B9DCC1300EAB694 /* AddEditView.swift */; };
 		B061C44D2B9DCECF00EAB694 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C44C2B9DCECF00EAB694 /* DetailView.swift */; };
 		B061C44F2B9DCEF300EAB694 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C44E2B9DCEF300EAB694 /* SettingView.swift */; };
 		B061C4512B9DD09A00EAB694 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4502B9DD09A00EAB694 /* HomeViewModel.swift */; };
 		B061C4532B9DD11900EAB694 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4522B9DD11900EAB694 /* DataService.swift */; };
 		B061C4552B9DD6E700EAB694 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4542B9DD6E700EAB694 /* MainContentView.swift */; };
 		B061C4572B9DD97100EAB694 /* authManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4562B9DD97100EAB694 /* authManager.swift */; };
+		B061C4592B9E0C5000EAB694 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4582B9E0C5000EAB694 /* RecipeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,13 +35,14 @@
 		B061C4422B9DB87300EAB694 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B061C4462B9DBB9C00EAB694 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		B061C4482B9DBC2000EAB694 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		B061C44A2B9DCC1300EAB694 /* EditReView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReView.swift; sourceTree = "<group>"; };
+		B061C44A2B9DCC1300EAB694 /* AddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditView.swift; sourceTree = "<group>"; };
 		B061C44C2B9DCECF00EAB694 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		B061C44E2B9DCEF300EAB694 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		B061C4502B9DD09A00EAB694 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B061C4522B9DD11900EAB694 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		B061C4542B9DD6E700EAB694 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		B061C4562B9DD97100EAB694 /* authManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authManager.swift; sourceTree = "<group>"; };
+		B061C4582B9E0C5000EAB694 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				B061C4502B9DD09A00EAB694 /* HomeViewModel.swift */,
 				B061C4522B9DD11900EAB694 /* DataService.swift */,
 				B061C4562B9DD97100EAB694 /* authManager.swift */,
+				B061C4582B9E0C5000EAB694 /* RecipeViewModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -108,7 +111,7 @@
 				B061C4422B9DB87300EAB694 /* LoginView.swift */,
 				B061C4462B9DBB9C00EAB694 /* RegistrationView.swift */,
 				B061C4482B9DBC2000EAB694 /* HomeView.swift */,
-				B061C44A2B9DCC1300EAB694 /* EditReView.swift */,
+				B061C44A2B9DCC1300EAB694 /* AddEditView.swift */,
 				B061C44C2B9DCECF00EAB694 /* DetailView.swift */,
 				B061C44E2B9DCEF300EAB694 /* SettingView.swift */,
 				B061C4542B9DD6E700EAB694 /* MainContentView.swift */,
@@ -193,9 +196,10 @@
 				B061C4492B9DBC2000EAB694 /* HomeView.swift in Sources */,
 				B061C4532B9DD11900EAB694 /* DataService.swift in Sources */,
 				B061C4312B9DAE3D00EAB694 /* Project1App.swift in Sources */,
-				B061C44B2B9DCC1300EAB694 /* EditReView.swift in Sources */,
+				B061C44B2B9DCC1300EAB694 /* AddEditView.swift in Sources */,
 				B061C4432B9DB87300EAB694 /* LoginView.swift in Sources */,
 				B061C4472B9DBB9C00EAB694 /* RegistrationView.swift in Sources */,
+				B061C4592B9E0C5000EAB694 /* RecipeViewModel.swift in Sources */,
 				B061C4572B9DD97100EAB694 /* authManager.swift in Sources */,
 				B061C4402B9DB35A00EAB694 /* ReModel.swift in Sources */,
 				B061C4552B9DD6E700EAB694 /* MainContentView.swift in Sources */,
