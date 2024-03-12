@@ -9,7 +9,8 @@ import SwiftUI
 
 @main
 struct Project1App: App {
-    @StateObject private var authManager = AuthManager()
+    @StateObject private var authManager = AuthManager.shared
+    
     var body: some Scene {
         WindowGroup {
 //            NavigationStack {
@@ -22,6 +23,11 @@ struct Project1App: App {
             if authManager.isAuthenticated {
                 MainContentView()
                     .environmentObject(authManager)
+                    .onAppear(){
+                        Task{
+                            await DataService.shared.initExampleData()
+                        }
+                    }
             } else {
                 LoginView()
                     .environmentObject(authManager)

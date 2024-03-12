@@ -23,6 +23,8 @@
 		B061C4552B9DD6E700EAB694 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4542B9DD6E700EAB694 /* MainContentView.swift */; };
 		B061C4572B9DD97100EAB694 /* authManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4562B9DD97100EAB694 /* authManager.swift */; };
 		B061C4592B9E0C5000EAB694 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B061C4582B9E0C5000EAB694 /* RecipeViewModel.swift */; };
+		B0C02FF52B9F88CB00E06287 /* Convertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C02FF42B9F88CB00E06287 /* Convertable.swift */; };
+		B0C02FF82B9F948000E06287 /* Recipe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0C02FF62B9F948000E06287 /* Recipe.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		B061C4542B9DD6E700EAB694 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		B061C4562B9DD97100EAB694 /* authManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authManager.swift; sourceTree = "<group>"; };
 		B061C4582B9E0C5000EAB694 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
+		B0C02FF42B9F88CB00E06287 /* Convertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convertable.swift; sourceTree = "<group>"; };
+		B0C02FF72B9F948000E06287 /* Recipe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Recipe.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,7 @@
 				B061C4322B9DAE3D00EAB694 /* ContentView.swift */,
 				B061C4342B9DAE3E00EAB694 /* Assets.xcassets */,
 				B061C4362B9DAE3E00EAB694 /* Preview Content */,
+				B0C02FF62B9F948000E06287 /* Recipe.xcdatamodeld */,
 			);
 			path = Project1;
 			sourceTree = "<group>";
@@ -101,6 +106,7 @@
 				B061C4522B9DD11900EAB694 /* DataService.swift */,
 				B061C4562B9DD97100EAB694 /* authManager.swift */,
 				B061C4582B9E0C5000EAB694 /* RecipeViewModel.swift */,
+				B0C02FF42B9F88CB00E06287 /* Convertable.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -192,9 +198,11 @@
 				B061C4332B9DAE3D00EAB694 /* ContentView.swift in Sources */,
 				B061C44F2B9DCEF300EAB694 /* SettingView.swift in Sources */,
 				B061C44D2B9DCECF00EAB694 /* DetailView.swift in Sources */,
+				B0C02FF82B9F948000E06287 /* Recipe.xcdatamodeld in Sources */,
 				B061C4512B9DD09A00EAB694 /* HomeViewModel.swift in Sources */,
 				B061C4492B9DBC2000EAB694 /* HomeView.swift in Sources */,
 				B061C4532B9DD11900EAB694 /* DataService.swift in Sources */,
+				B0C02FF52B9F88CB00E06287 /* Convertable.swift in Sources */,
 				B061C4312B9DAE3D00EAB694 /* Project1App.swift in Sources */,
 				B061C44B2B9DCC1300EAB694 /* AddEditView.swift in Sources */,
 				B061C4432B9DB87300EAB694 /* LoginView.swift in Sources */,
@@ -408,6 +416,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B0C02FF62B9F948000E06287 /* Recipe.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B0C02FF72B9F948000E06287 /* Recipe.xcdatamodel */,
+			);
+			currentVersion = B0C02FF72B9F948000E06287 /* Recipe.xcdatamodel */;
+			path = Recipe.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B061C4252B9DAE3D00EAB694 /* Project object */;
 }

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AddEditView: View {
     
+    @Binding var recipe: Recipe
     @State private var recipeName: String = ""
     @State private var recipeDescription: String = ""
     @State private var selectedCategories: [Category] = [] // Assuming you have a way to manage category selection
@@ -17,6 +18,9 @@ struct AddEditView: View {
     @State private var ingredientQuantity: String = ""
     // Assuming a simplistic approach for ingredient unit (you may want to use a picker for real cases)
     @State private var ingredientUnit: String = ""
+    @State private var instruction: String = ""
+    
+    @Environment(\.presentationMode) var presentationMode
     
     // Dummy categories for demonstration. Replace with your data source.
     let availableCategories: [Category] = [
@@ -38,6 +42,16 @@ struct AddEditView: View {
                         }
                     }
             }
+            Section(header: Text("Instruction")) {
+                TextEditor(text: $instruction)
+                    .frame(minHeight: 100) // Adjust based on your UI needs
+                    .onChange(of: instruction) {
+                        if instruction.count > 250 {
+                            instruction = String(instruction.prefix(500))
+                        }
+                    }
+            }
+            
             Section(header: Text("Categories")) {
                 // Assuming you have a predefined list of categories
                 ForEach(availableCategories, id: \.self) { category in
@@ -63,10 +77,36 @@ struct AddEditView: View {
             
             Button("Save Recipe") {
                 // Save or update the recipe logic here
+                Task{
+                    let ingredient = RecipeIngredient(ingredient: Ingredient(name: ingredientName, imageName: "", unit: ingredientUnit), quantity: ingredientQuantity)
+                    let object = Recipe(name: recipeName, descriptions: recipeDescription, instruction: instruction, categories: selectedCategories, ingredients: [ingredient])
+                    let result = await DataService.shared.insertOrReplaceRecipe([object])
+                    if (result){
+                        print("Save successful~")
+                        recipe = object
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
             }
         }
         .navigationTitle("Edit Recipe")
+        .onAppear(){
+            updateSubviews()
+        }
     }
+    func updateSubviews(){
+        self.recipeName = recipe.name
+        self.instruction = recipe.instruction
+        self.recipeDescription = recipe.descriptions
+        let currentRecipeTags = recipe.categories.map({ $0.name })
+        self.selectedCategories = availableCategories.filter({ c in
+            return currentRecipeTags.contains(c.name)
+        })
+        self.ingredientName = recipe.ingredients.first?.ingredient.name ?? ""
+        self.ingredientQuantity = recipe.ingredients.first?.quantity ?? ""
+        self.ingredientUnit = recipe.ingredients.first?.ingredient.unit ?? ""
+    }
+    
 }
 
 
@@ -104,8 +144,8 @@ struct LimitedTextField: View {
     }
 }
 
-struct AddEditRecipeView_Previews: PreviewProvider{
-    static var previews: some View{
-        AddEditView()
-    }
-}
+//struct AddEditRecipeView_Previews: PreviewProvider{
+//    static var previews: some View{
+//        AddEditView()
+//    }
+//}

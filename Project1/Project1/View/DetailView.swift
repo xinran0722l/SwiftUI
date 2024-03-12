@@ -37,7 +37,7 @@ import SwiftUI
 //
 
 struct RecipeDetailView: View {
-    var recipe: Recipe
+    @State var recipe: Recipe
     
     var body: some View {
         ScrollView {
@@ -75,6 +75,18 @@ struct RecipeDetailView: View {
                 VStack(alignment: .leading) {
                     Text("Ingredients")
                         .font(.headline)
+                    
+                    ForEach(recipe.ingredients, id: \.self) { ingredient in
+                        HStack{
+                            Text(ingredient.ingredient.name)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                            Spacer()
+                            Text("\(ingredient.quantity)\(ingredient.ingredient.unit)")
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                        }
+                    }
                     // List ingredients here, possibly adjusting quantities based on selectedServings
                 }
                 
@@ -95,7 +107,7 @@ struct RecipeDetailView: View {
             leading: Button("Back") {
                 // Action to navigate back
             },
-            trailing: NavigationLink(destination: AddEditView()) {
+            trailing: NavigationLink(destination: AddEditView(recipe: $recipe)) {
                 Text("Edit")
             }
         )

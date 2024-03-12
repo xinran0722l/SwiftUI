@@ -12,16 +12,17 @@ import SwiftUI
 class HomeViewModel: ObservableObject {
     @Published var recipes: [Recipe] = []
     @Published var categories: [Category] = []
-    @Published var favoriteRecipeIDs: Set<UUID> = []
+    // @Published var favoriteRecipeIDs: Set<UUID> = []
     @Published var selectedCategoryIDs: Set<UUID> = []
 
     init() {
-        refreshData()
+        categories = DataService.shared.fetchCategories()
+        // refreshData()
     }
     
-    func refreshData() {
-        categories = DataService.shared.fetchCategories()
-        recipes = DataService.shared.fetchRecipes()
+    @MainActor
+    func refreshData() async{
+        recipes = await DataService.shared.getAllRecipes()
     }
 
     func toggleCategorySelection(_ category: Category) {
@@ -34,7 +35,8 @@ class HomeViewModel: ObservableObject {
     }
     
     var filteredRecipes: [Recipe] {
-        let selectedCategoryNames: Set<String> = Set(categories.filter { selectedCategoryIDs.contains($0.id) }.map { $0.name })
+        let selectedCategoryNames: Set<String> = Set(categories.filter { 
+            selectedCategoryIDs.contains($0.id) }.map { $0.name })
         return recipes.filter { recipe in
             let recipeCategoryNames = Set(recipe.categories.map { $0.name })
             return !recipeCategoryNames.isDisjoint(with: selectedCategoryNames) // True if there is at least one common name
@@ -42,14 +44,15 @@ class HomeViewModel: ObservableObject {
     }
     
     func toggleFavorite(for recipe: Recipe) {
-        if favoriteRecipeIDs.contains(recipe.id) {
-            favoriteRecipeIDs.remove(recipe.id)
-        } else {
-            favoriteRecipeIDs.insert(recipe.id)
+        let statusAfterChanged = !recipe.isFavorite
+        Task{
+            await DataService.shared.updateRecipeCollectStatus(recipeName:recipe.name,
+                                                               status:statusAfterChanged)
+            await refreshData()
         }
     }
-    func isFavorite(recipe: Recipe) -> Bool {
-        favoriteRecipeIDs.contains(recipe.id)
-    }
+//    func isFavorite(recipe: Recipe) -> Bool {
+//        favoriteRecipeIDs.contains(recipe.id)
+//    }
 
 }

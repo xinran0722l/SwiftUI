@@ -33,17 +33,19 @@ struct HomeView: View {
                     // Displaying recipes
                     ForEach(viewModel.filteredRecipes) { recipe in
                         NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
-                            RecipeRowView(recipe: recipe, isFavorite: viewModel.isFavorite(recipe: recipe)) {
+                            RecipeRowView(recipe: recipe, isFavorite: recipe.isFavorite) {
                                 viewModel.toggleFavorite(for: recipe)
                             }
                         }
                     }
                 }
             }
+            .onAppear {
+                Task{
+                    await self.viewModel.refreshData()
+                }
+            }
             .navigationBarTitle("welcome,\(authManager.username)", displayMode: .inline)
-        }
-        .onAppear {
-            viewModel.refreshData()
         }
     }
 }
