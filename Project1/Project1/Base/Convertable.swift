@@ -7,30 +7,34 @@
 
 import Foundation
 
+/// Convert json to object or object to json
 protocol Convertable: Codable{
-    // init object from json
-    static func fromJson<T:Codable>(jsonObject:[String:Any])->T?
     
-    // object to json
+    /// init object from json
+    static func fromJson<T: Codable>(jsonObject: [String: Any]) -> T?
+    /// object to json
     func toJson() -> [String: Any]?
+    
 }
 
-/// default implementation
+/// default implantation
 extension Convertable{
-    static func fromJson<T:Codable>(jsonObject:[String:Any])->T?{
+    
+    static func fromJson<T: Codable>(jsonObject: [String: Any]) -> T? {
         let decoder = JSONDecoder()
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options:[]) else {return nil}
-        do {
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: []) else { return nil }
+        do{
             return try decoder.decode(T.self, from: jsonData)
         } catch{
-            print("fromJson error:\(error.localizedDescription)")
+            print("fromJson error: \(error.localizedDescription)")
         }
         return nil
     }
     
-    func toJson() -> [String:Any]?{
+    func toJson() -> [String: Any]? {
         let encoder = JSONEncoder()
-        guard let data = try? encoder.encode(self) else {return nil}
-        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
+        guard let data = try? encoder.encode(self) else { return nil }
+        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
     }
 }
+

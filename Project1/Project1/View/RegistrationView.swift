@@ -37,3 +37,4 @@ struct RegistrationView_Previews: PreviewProvider{
         RegistrationView()
     }
 }
+

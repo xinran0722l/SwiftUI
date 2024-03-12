@@ -34,11 +34,9 @@ class DataService {
         let bRecipe = Recipe(name: "Pancakes", isFavorite: false, descriptions: "Delicious breakfast pancakes.", instruction: "Mix and cook.", categories: [Category(id:UUID(), name: "Breakfast")], ingredients: [
             RecipeIngredient(ingredient: Ingredient(name: "Source 1", imageName: "", unit: "g"), quantity: "200")
         ])
-        
         let vRecipe = Recipe(name: "Vegetarian Pizza", isFavorite: false, descriptions: "A tasty vegetarian pizza.", instruction: "Prepare dough, add toppings, and bake.", categories: [Category(id:UUID(), name: "Vegetarian")], ingredients: [
             RecipeIngredient(ingredient: Ingredient(name: "Source 2", imageName: "", unit: "kg"), quantity: "1")
         ])
-        
         await insertOrReplaceRecipe([bRecipe, vRecipe])
         UserDefaults.standard.setValue(true, forKey: "init_example_data")
         UserDefaults.standard.synchronize()
@@ -197,7 +195,7 @@ class DataService {
         }
         return recipes
     }
-
+    
     @MainActor
     func updateRecipeCollectStatus(recipeName: String, status: Bool) async{
         await context.perform {
@@ -294,3 +292,4 @@ class DataService {
     }
     
 }
+

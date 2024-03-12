@@ -71,6 +71,10 @@ struct Recipe: Identifiable, Convertable {
         case ingredients
     }
     
+    static func empty() -> Recipe{
+        return Recipe(name: "", descriptions: "", instruction: "", categories: [], ingredients: [])
+    }
+    
 }
 
 struct RecipeCollect: Convertable {
@@ -86,3 +90,4 @@ struct RecipeCollect: Convertable {
     }
     
 }
+

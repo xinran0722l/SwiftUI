@@ -10,7 +10,7 @@ import SwiftUI
 
 //struct RecipeDetailView: View {
 //    var recipe: Recipe
-//    
+//
 //    var body: some View {
 //        ScrollView {
 //            VStack(alignment: .leading) {
@@ -25,7 +25,7 @@ import SwiftUI
 //                        .resizable()
 //                        .aspectRatio(contentMode: .fit)
 //                }
-//                
+//
 //                Text(recipe.name).font(.title)
 //                Text("Description: \(recipe.description)")
 //                // Continue building out the detail view...
@@ -119,5 +119,6 @@ struct RecipeDetailView: View {
 //        RecipeDetailView(recipe: <#Recipe#>)
 //    }
 //}
+
 
 

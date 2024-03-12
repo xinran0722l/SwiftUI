@@ -22,6 +22,10 @@ struct AddEditView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+//    init(recipe: Binding<Recipe>) {
+//        self._recipe = recipe
+//    }
+    
     // Dummy categories for demonstration. Replace with your data source.
     let availableCategories: [Category] = [
         Category(name: "Breakfast"),
@@ -31,7 +35,6 @@ struct AddEditView: View {
     var body: some View {
         Form {
             LimitedTextField(label: "Recipe Name", text: $recipeName, maxLength: 50)
-            LimitedTextField(label: "Description", text: $recipeDescription, maxLength: 250)
             
             Section(header: Text("Description")) {
                 TextEditor(text: $recipeDescription)
@@ -42,6 +45,7 @@ struct AddEditView: View {
                         }
                     }
             }
+            
             Section(header: Text("Instruction")) {
                 TextEditor(text: $instruction)
                     .frame(minHeight: 100) // Adjust based on your UI needs
@@ -76,7 +80,10 @@ struct AddEditView: View {
             }
             
             Button("Save Recipe") {
-                // Save or update the recipe logic here
+                if (recipeName.count == 0){
+                    print("Can not save empty recipe.")
+                    return
+                }
                 Task{
                     let ingredient = RecipeIngredient(ingredient: Ingredient(name: ingredientName, imageName: "", unit: ingredientUnit), quantity: ingredientQuantity)
                     let object = Recipe(name: recipeName, descriptions: recipeDescription, instruction: instruction, categories: selectedCategories, ingredients: [ingredient])
@@ -90,10 +97,11 @@ struct AddEditView: View {
             }
         }
         .navigationTitle("Edit Recipe")
-        .onAppear(){
+        .onAppear {
             updateSubviews()
         }
     }
+    
     func updateSubviews(){
         self.recipeName = recipe.name
         self.instruction = recipe.instruction
@@ -106,7 +114,6 @@ struct AddEditView: View {
         self.ingredientQuantity = recipe.ingredients.first?.quantity ?? ""
         self.ingredientUnit = recipe.ingredients.first?.ingredient.unit ?? ""
     }
-    
 }
 
 
@@ -146,6 +153,7 @@ struct LimitedTextField: View {
 
 //struct AddEditRecipeView_Previews: PreviewProvider{
 //    static var previews: some View{
-//        AddEditView()
+//        AddEditView(recipe: $Recipe(name: "Pancakes", isFavorite: false, descriptions: "Delicious breakfast pancakes.", instruction: "Mix and cook.", categories: [], ingredients: []))
 //    }
 //}
+

@@ -9,8 +9,10 @@ import SwiftUI
 class AuthManager: ObservableObject {
     @Published var isAuthenticated: Bool
     @Published var username: String = ""
+    
     static let shared = AuthManager()
-    private init(){
+    
+    private init() {
         // Initialize isAuthenticated based on persistent storage
         isAuthenticated = UserDefaults.standard.bool(forKey: "isLoggedIn")
         if let username = UserDefaults.standard.string(forKey: "loggedUsername"), username.count > 0{
@@ -30,11 +32,11 @@ class AuthManager: ObservableObject {
 
     func logout() {
         isAuthenticated = false
+        username = ""
         UserDefaults.standard.set("", forKey: "loggedUsername")
         UserDefaults.standard.set(false, forKey: "isLoggedIn")
         UserDefaults.standard.synchronize()
     }
 }
-
 
 

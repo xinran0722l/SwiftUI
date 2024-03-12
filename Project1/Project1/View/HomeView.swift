@@ -13,6 +13,8 @@ struct HomeView: View {
     @ObservedObject var viewModel = HomeViewModel()
     @EnvironmentObject var authManager: AuthManager
     
+    @State var createRecipe: Recipe = Recipe.empty()
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -46,6 +48,11 @@ struct HomeView: View {
                 }
             }
             .navigationBarTitle("welcome,\(authManager.username)", displayMode: .inline)
+            .navigationBarItems(
+                trailing: NavigationLink(destination: AddEditView(recipe: $createRecipe)) {
+                    Text("Add")
+                }
+            )
         }
     }
 }
@@ -111,3 +118,4 @@ struct RecipeRowView: View {
 //        HomeView()
 //    }
 //}
+

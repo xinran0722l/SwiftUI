@@ -12,12 +12,11 @@ import SwiftUI
 class HomeViewModel: ObservableObject {
     @Published var recipes: [Recipe] = []
     @Published var categories: [Category] = []
-    // @Published var favoriteRecipeIDs: Set<UUID> = []
+//    @Published var favoriteRecipeIDs: Set<UUID> = []
     @Published var selectedCategoryIDs: Set<UUID> = []
 
     init() {
         categories = DataService.shared.fetchCategories()
-        // refreshData()
     }
     
     @MainActor
@@ -35,8 +34,7 @@ class HomeViewModel: ObservableObject {
     }
     
     var filteredRecipes: [Recipe] {
-        let selectedCategoryNames: Set<String> = Set(categories.filter { 
-            selectedCategoryIDs.contains($0.id) }.map { $0.name })
+        let selectedCategoryNames: Set<String> = Set(categories.filter { selectedCategoryIDs.contains($0.id) }.map { $0.name })
         return recipes.filter { recipe in
             let recipeCategoryNames = Set(recipe.categories.map { $0.name })
             return !recipeCategoryNames.isDisjoint(with: selectedCategoryNames) // True if there is at least one common name
@@ -46,8 +44,7 @@ class HomeViewModel: ObservableObject {
     func toggleFavorite(for recipe: Recipe) {
         let statusAfterChanged = !recipe.isFavorite
         Task{
-            await DataService.shared.updateRecipeCollectStatus(recipeName:recipe.name,
-                                                               status:statusAfterChanged)
+            await DataService.shared.updateRecipeCollectStatus(recipeName:recipe.name, status:statusAfterChanged)
             await refreshData()
         }
     }
@@ -56,3 +53,4 @@ class HomeViewModel: ObservableObject {
 //    }
 
 }
+
