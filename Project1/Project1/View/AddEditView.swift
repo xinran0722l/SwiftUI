@@ -95,7 +95,21 @@ struct AddEditView: View {
                     }
                 }
             }
-        }
+            Button("Delete Recipe") {
+                if (recipeName.count == 0){
+                    print("Can not delete empty recipe.")
+                    return
+                }
+                Task{
+                    await DataService.shared.deleteRecipe([recipeName])
+                    
+                    print("delete successful~")
+                        //recipe = object
+                    presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            }
+            
         .navigationTitle("Edit Recipe")
         .onAppear {
             updateSubviews()

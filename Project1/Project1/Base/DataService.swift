@@ -155,6 +155,7 @@ class DataService {
     @MainActor
     func deleteRecipe(_ recipeNames: [String]) async{
         let fetchRequest = NSFetchRequest<RecipeObject>(entityName: TableName.recipe.rawValue)
+        fetchRequest.predicate = NSPredicate(format: "name IN %@", recipeNames)
         self.context.performAndWait {
             do {
                 let results: [RecipeObject] = try self.context.fetch(fetchRequest)
